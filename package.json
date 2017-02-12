@@ -1,0 +1,43 @@
+{
+  "name": "google-spreadsheet-notifier",
+  "version": "1.0.0",
+  "description": "Displays OS notifications with content from Google Spreadsheets.",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && mocha --recursive --reporter spec",
+    "test-watch": "standard && mocha --watch --recursive --reporter spec",
+    "start": "node bin/index.js"
+  },
+  "bin": {
+    "gsn": "bin/index.js"
+  },
+  "author": "Alberto Miranda",
+  "repository": "codealchemist/google-spreadsheet-notifier",
+  "license": "MIT",
+  "dependencies": {
+    "askument": "github:codealchemist/askument",
+    "chrono-node": "^1.2.5",
+    "google-auth-library": "^0.10.0",
+    "google-spreadsheet": "^2.0.3",
+    "googleapis": "^16.1.0",
+    "just-ask": "^1.0.0",
+    "minimist": "^1.2.0",
+    "node-notifier": "^5.0.2",
+    "node-schedule": "^1.2.0",
+    "p-series": "^1.0.0",
+    "promise-series": "^1.0.0",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "standard": "^8.6.0"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "beforeEach"
+    ]
+  }
+}
