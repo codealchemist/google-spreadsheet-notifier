@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 'use strict'
 const googleSpreadsheetNotifier = require('../src/index.js')
 const winston = require('winston')
