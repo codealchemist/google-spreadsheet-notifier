@@ -45,7 +45,7 @@ or even notify something else based on the data you received.
 
 ```
 'use strict'
-const googleSpreadsheetNotifier = require('./index')
+const googleSpreadsheetNotifier = require('google-spreadsheet-notifier')
 const winston = require('winston')
 winston.level = 'info' // Set to 'debug' for more output.
 
