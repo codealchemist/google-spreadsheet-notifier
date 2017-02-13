@@ -32,8 +32,7 @@ function start (params) {
   const promises = [
     () => askument('id', 'Spreadsheet ID:', args),
     () => askument('range', 'Spreadsheet Range:', args),
-    () => askument('title', 'Notification Title:', args),
-    () => askument('time', 'Notification Time:', args)
+    () => askument('title', 'Notification Title:', args)
   ]
 
   // Get all required parameters.
@@ -41,7 +40,6 @@ function start (params) {
     const spreadsheetId = results[0]
     const spreadsheetRange = results[1]
     const notificationTitle = results[2] || 'Google Spreadsheet Notifier'
-    const notificationTime = results[3]
     winston.log('debug', '- Spreadsheet ID:', spreadsheetId)
     winston.log('debug', '- Spreadsheet Range:', spreadsheetRange)
     winston.log('debug', '- Notification Title:', notificationTitle)
@@ -50,6 +48,7 @@ function start (params) {
     if (!spreadsheetRange) throw new Error('Spreadsheet Range is required!')
 
     // Schedule notification.
+    const notificationTime = args.time
     if (notificationTime) {
       schedule({notificationTime, spreadsheetId, spreadsheetRange, notificationTitle, filter})
       return
@@ -107,7 +106,7 @@ function notify ({spreadsheetId, spreadsheetRange, notificationTitle, filter}) {
     // Display notification.
     notifier.notify({
       title: notificationTitle,
-      message: message,
+      message: message || '(EMPTY)',
       sound: 'Funk'
     }, (error, response, metadata) => {
       if (error) {
