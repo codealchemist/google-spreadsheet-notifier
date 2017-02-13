@@ -87,12 +87,12 @@ function getNewToken (oauth2Client, callback) {
     prompt: 'GSN> '
   })
 
-  winston.log('debug', 'Authorize this app by visiting this url: ', authUrl)
+  console.log('Authorize this app by visiting this url: ', authUrl)
   rl.question('Enter the code from that page here: ', function (code) {
     rl.close()
     oauth2Client.getToken(code, function (err, token) {
       if (err) {
-        winston.log('debug', 'Error while trying to retrieve access token', err)
+        console.log('Error while trying to retrieve access token', err)
         return
       }
       oauth2Client.credentials = token
