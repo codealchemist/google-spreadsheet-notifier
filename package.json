@@ -24,6 +24,7 @@
     "minimist": "^1.2.0",
     "node-notifier": "^5.0.2",
     "node-schedule": "^1.2.0",
+    "open": "0.0.5",
     "p-series": "^1.0.0",
     "promise-series": "^1.0.0",
     "winston": "^2.3.1"

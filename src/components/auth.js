@@ -3,6 +3,7 @@ const fs = require('fs')
 const {resolve} = require('path')
 const readline = require('readline')
 const GoogleAuth = require('google-auth-library')
+const open = require('open')
 const winston = require('winston')
 winston.level = 'info'
 
@@ -83,18 +84,29 @@ function getNewToken (oauth2Client, callback) {
 
   const rl = readline.createInterface({
     input: process.stdin,
-    output: process.stdout,
-    prompt: 'GSN> '
+    output: process.stdout
   })
 
-  console.log('Authorize this app by visiting this url: ', authUrl)
-  rl.question('Enter the code from that page here: ', function (code) {
-    rl.close()
+  // Display and open URL to authenticate with Google.
+  console.log('-'.repeat(80))
+  open(authUrl, (error) => {
+    if (error) {
+      console.log('Authorize this app by visiting this url: ', authUrl)
+      console.log()
+    }
+  })
+
+  rl.question('Enter the code obtained on the authorization page: ', function (code) {
     oauth2Client.getToken(code, function (err, token) {
       if (err) {
         console.log('Error while trying to retrieve access token', err)
+        console.log('-'.repeat(80))
+        console.log()
         return
       }
+
+      console.log('-'.repeat(80))
+      console.log()
       oauth2Client.credentials = token
       storeToken(token)
       callback(oauth2Client)

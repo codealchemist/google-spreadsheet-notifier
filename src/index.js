@@ -91,6 +91,20 @@ function isValidTime (time) {
   return time.match(/[0-9]{1,2}:[0-9]{2,}/)
 }
 
+function getMessage (rows) {
+  const defaultMessage = '(EMPTY)'
+  if (!rows || !rows.length) return defaultMessage
+
+  // Support string responses.
+  if (typeof rows === 'string') return rows
+
+  // Multi value response.
+  if (rows.length > 1) return JSON.stringify(rows)
+
+  // Single value response.
+  return rows[0]
+}
+
 function notify ({spreadsheetId, spreadsheetRange, notificationTitle, filter}) {
   getRows({spreadsheetId, spreadsheetRange}).then((rows) => {
     // winston.log('debug', '-- ROWS:', rows)
@@ -100,13 +114,12 @@ function notify ({spreadsheetId, spreadsheetRange, notificationTitle, filter}) {
     }
 
     // Set notification message.
-    let message = rows[0]
-    if (rows.length > 1) message = JSON.stringify(rows)
+    const message = getMessage(rows)
 
     // Display notification.
     notifier.notify({
       title: notificationTitle,
-      message: message || '(EMPTY)',
+      message: message,
       sound: 'Funk'
     }, (error, response, metadata) => {
       if (error) {
