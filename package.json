@@ -15,7 +15,7 @@
   "repository": "codealchemist/google-spreadsheet-notifier",
   "license": "MIT",
   "dependencies": {
-    "askument": "github:codealchemist/askument",
+    "askument": "^1.0.1",
     "chrono-node": "^1.2.5",
     "google-auth-library": "^0.10.0",
     "google-spreadsheet": "^2.0.3",
