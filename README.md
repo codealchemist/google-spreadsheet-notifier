@@ -1,6 +1,8 @@
 # google-spreadsheet-notifier
 Displays OS notifications with content from Google Spreadsheets.
 
+[![Build Status](https://travis-ci.org/codealchemist/google-spreadsheet-notifier.svg?branch=master)](https://travis-ci.org/codealchemist/google-spreadsheet-notifier)
+
 ## Install
 
 For programatic access in your project:
