@@ -19,11 +19,11 @@ Let **GSN** ask for required params:
 
 Example, passing all arguments:
 
-`gns -- --id=1cqhJqJISbAXf98avPK9N1B8W7XNkixUKy6NUggqlWwc --range=A1 --title=Hello --time=18:30`
+`gsn -- --id=1cqhJqJISbAXf98avPK9N1B8W7XNkixUKy6NUggqlWwc --range=A1 --title=Hello --time=18:30`
 
 Example, letting **GSN** ask for missing arguments:
 
-`gns -- --id=1cqhJqJISbAXf98avPK9N1B8W7XNkixUKy6NUggqlWwc --range=A1`
+`gsn -- --id=1cqhJqJISbAXf98avPK9N1B8W7XNkixUKy6NUggqlWwc --range=A1`
 
 ## Command line arguments
 
